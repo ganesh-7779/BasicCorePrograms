@@ -1,25 +1,36 @@
 package bridgelabz;
 
+import java.lang.Math;
 import java.util.Scanner;
-
 public class Factors {
-	public double factorsTheNumber(double n) {
-		double fact = 1;
-		for (double i = 2; i <= n; i++) {
-			fact = fact * i;
-		}
-		System.out.println(fact);
-		return (fact);
-	}
 
 	public static void main(String[] args) {
-		System.out.println("Enter Number To Find Prime Factor");
-		Scanner sc = new Scanner(System.in);
-		double userInput = sc.nextDouble();
-		sc.close();
-		Factors obj = new Factors();
-		obj.factorsTheNumber(userInput);
+		
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter number to compute factors:");
+		
+		int num=sc.nextInt();
+		
+		while (num%2==0)
+		{
+			System.out.println(2);
+			num/=2;
+		}
+		
+		for (int i=3;i<=Math.sqrt(num);i+=2)
+		{
+			while(num%i == 0)
+			{
+				System.out.println(i);
+				num/=i;
+			}
+		}
+		
+		if(num>2)
+			System.out.println(num);
 
+        sc.close();
 	}
 
 }
